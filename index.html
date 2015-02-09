@@ -1,0 +1,46 @@
+<html>
+  <head>
+  <title>Example</title>
+  </head>
+<body>
+
+<button id="button">Click me</button>
+  <div id="content"></div>
+
+    <ul id="list">
+      <li>Clicked<span>0</span> times</li>
+      <li>Clicked<span>0</span> times</li>
+      <li>Clicked<span>0</span> times</li>
+    </ul>
+
+
+    <script>
+
+    var b = document.querySelector("#button");
+    b.addEventListener("click", function(){
+        var myText = "Hello World"; 
+          myDiv = document.getElementById("content");
+          
+          myDiv.innerHTML = myText;
+    });
+
+   
+
+    // other JS solution
+      // var b = document.querySelector("#button")
+      // b.addEventListener("click", myFunc);
+
+    // jQuery solution
+    
+    // $("#button").on("click", function() {
+    //   $("content").html("Hello World")
+    // });
+   
+
+    </script>
+
+</body>
+
+
+
+</html>
