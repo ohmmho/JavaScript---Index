@@ -13,24 +13,93 @@
       <li>Clicked<span>0</span> times</li>
     </ul>
 
-
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
     <script>
 
-    var b = document.querySelector("#button");
-    b.addEventListener("click", function(){
-        var myText = "Hello World"; 
-          myDiv = document.getElementById("content");
+  // Keep the SCOPE
+
+   var self = this; //we store the global scope in a var to call it inside the function. Here "this" is window.
+   var lis = $("li");
+     lis.on("click", function( ){
+      console.log(this);
+     }.bind());
+
+    //this three lines do the same thing -> change the scope of person for window.
+
+     var windowContextFunc = person.talk.bind(this);
+     widowContextFunc();
+     person.talk.bind(this)();
+
+     var a, b;
+     person.talk.call(this,[a,b]);
+     person.talk.apply(this, a, b);
+
+    // document.getElementByTagName("li");
+    // document.querySelectorAll("li");
+
+    // var li = $("li");
+    // lis.each(function(){
+    //   li.on("click")
+    // })
+
+    // var lis = $("li");
+    //   lis.on("click", function () {
+    //     var numString = $(this).find("span").html();
+    //     var numInt= parseInt(numString);
+    //       $(this).find("span").html(numInt + 1)
+    //   });
+
+  
+    // var lis = $("li");
+    // lis.on("click", function () {
+    //   var numString = $("span").html();
+    //   var numInt= parseInt(numString);
+    //   $("span").html(numInt + 1)
+    //   // console.log(numInt + 1);
+    // });
+
+
+
+  //   var person = {  //the context here is "person" --> it retrieves Obj.
+  //     name: "Juan",
+  //     age: 34,
+  //     siblings: ["Maria", "Whatever"],
+  //     talk: function() {
+  //       console.log(this);
+  //     }
+  //   };
+  //   console.log(person.name, person.this);
+
+  // //this retrives the context of the function, in this case: the scope of the function --> window
+    // function myFunc() {
+    //   console.log(this); 
+    // }
+    // myFunc();
+    // //global(parent) scope
+    // var a = 1;
+    // console.log(window..a);
+
+    // function func() {
+    //   var b = 2
+    //   //func(child) scope
+    //   console.log(b);
+    // }
+
+    // console.log(b); // --> syntax error because b is defined only inside the scope (inside the function)
+
+    // var b = document.querySelector("#button");
+    // b.addEventListener("click", function(){
+    //     var myText = "Hello World"; 
+    //       myDiv = document.getElementById("content");
           
-          myDiv.innerHTML = myText;
-    });
+    //       myDiv.innerHTML = myText;
+    // });
 
-   
-
-    // other JS solution
+  // other JS solution
       // var b = document.querySelector("#button")
       // b.addEventListener("click", myFunc);
 
-    // jQuery solution
+  // jQuery solution
     
     // $("#button").on("click", function() {
     //   $("content").html("Hello World")
